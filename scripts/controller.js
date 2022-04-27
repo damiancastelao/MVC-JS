@@ -3,13 +3,15 @@
  * se encarga de enlazar los datos con la interface de usuario
  * en nuestro caso, enlaza los objetos Car con el HTML
  * 
+ * @field view encargada del html
  * @field fiat un coche en concreto
  * @field citroen otro coche en concreto
  */
 class Controller {
 
-    constructor() {
-
+    constructor(view) {
+        // recojemos el objeto que maneja el html
+        this.view = view
 
         // instanciamos un coche en particular
         this.fiat = this.creaCoche("Fiat")
@@ -62,4 +64,4 @@ class Controller {
 }
 
 // lanzamos la aplicacion, el objeto app de la clase controller
-const app = new Controller()
+const app = new Controller(new View)
