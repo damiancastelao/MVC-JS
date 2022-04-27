@@ -6,15 +6,17 @@ class View {
     constructor() {
         // recojo el elemento raiz. Un div que contendrá todos los elementos
         this.app = this.getElement('#root')
-            // creo un elemento de tipo h1
+
+        // creo elemento y le pongo contenido
         this.aviso = this.createElement('h1', 'orange')
-            // le pongo contenido al elemento
-        this.aviso.textContent = 'Mira en la consola (<h1> creado en el View)'
-        this.debug = this.createElement('h2')
-        this.debug.textContent = 'Prueba a ver los objetos: app.fiat, app.citroen, app.view'
-            // los añado al div raiz
-        this.app.append(this.aviso)
-        this.app.append(this.debug)
+        this.aviso.textContent = 'Utiliza la consola'
+        this.debug1 = this.createElement('h2')
+        this.debug1.textContent = 'Prueba a ver los objetos: app.model.cars'
+        this.debug2 = this.createElement('h2')
+        this.debug2.textContent = "Acelera un coche app.aumentaVelocidad('seat',12)"
+
+        // los añado al div raiz
+        this.app.append(this.aviso, this.debug1, this.debug2)
     }
 
     /**
