@@ -24,7 +24,10 @@ class Controller {
 
         // enlazamos los eventos de acelerar y frenar
         this.view.bindAceleraCoche(this.handleAumentaVelocidad.bind(this))
-        this.view.bindFrenaCoche(this.handleDisminuyeVelocidad.bind(this))
+
+        // no necesitamos usar bind(this) si usamos las "arrow functions"
+        // en la definicion del handle
+        this.view.bindFrenaCoche(this.handleDisminuyeVelocidad)
 
     }
 
@@ -46,7 +49,16 @@ class Controller {
      * @param modelo coche que queremos frenar
      * @param valor decremento de velocidad
      */
-    handleDisminuyeVelocidad(modelo, valor) {
+    /* handleDisminuyeVelocidad(modelo, valor) {
+        // recojemos el coche que queremos frenar
+        // y utilizamos su método frenar para cambiar la velocidad
+        this.model.getCar(modelo).frenar(valor)
+    } */
+
+    // esta sería otra nomencaltura que simplifica el codigo
+    // se denomina "arrow functions"
+    // https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+    handleDisminuyeVelocidad = (modelo, valor) => {
         // recojemos el coche que queremos frenar
         // y utilizamos su método frenar para cambiar la velocidad
         this.model.getCar(modelo).frenar(valor)
