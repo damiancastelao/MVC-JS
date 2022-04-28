@@ -11,16 +11,11 @@ class View {
         this.aviso = this.createElement('h1', 'orange')
         this.aviso.textContent = 'Utiliza la consola'
         this.debug1 = this.createElement('h2')
-        this.debug1.textContent = 'Prueba crear un coche:'
-        this.debug2 = this.createElement('p')
-        this.debug2.textContent = 'const nuevo = app.model.addCar("Beach")'
-        this.debug3 = this.createElement('h2')
-        this.debug3.textContent = "Luego crea los mando de ese coche:"
-        this.debug4 = this.createElement('p')
-        this.debug4.textContent = 'app.view.creaMandos(nuevo)'
+        this.debug1.textContent = 'Prueba crear un coche, mandos y que todo funcione'
+
 
         // los añado al div raiz
-        this.app.append(this.aviso, this.debug1, this.debug2, this.debug3, this.debug4)
+        this.app.append(this.aviso, this.debug1)
     }
 
     /**
@@ -48,14 +43,18 @@ class View {
         return element
     }
 
-    // Cada vez que creamos un coche vamos a crear un mando
-    // serán dos botones uno para acelerar, otro para frenar
+    /**
+     * Cada vez que creamos un coche vamos a crear un mando
+     * serán dos botones uno para acelerar, otro para frenar
+     * Usamos desestructuración, ya que solo necesitamos el 'model'
+     * @param {Car} car coche del que queremos crear el mando
+     */
 
-    creaMandos(car) {
+    creaMandos({ model }) {
         // creamos un contenedor para los dos botones
         // utilizamos el modelo del coche como clase, asi lo tenemos identificado
-        const contenedor = this.createElement('div', car.getModel())
-        contenedor.innerHTML = '<h2>' + car.getModel() + '<h2>'
+        const contenedor = this.createElement('div', model)
+        contenedor.innerHTML = '<h2>' + model + ' - velocidad: <span>0</span><h2>'
         this.app.append(contenedor)
             // cada boton tambien lo identificamos con la clase
             // lo adjuntamos al contenedor
@@ -67,8 +66,9 @@ class View {
 
     }
 
-    /* Creamos los event listeners para lanzar eventos según interacción con la interface de usuario (HTML)
-     * usamos el prefijo 'bind', ya que seran enlaces 
+    /**
+     * Creamos los event listeners para lanzar eventos según interacción con la interface de usuario(HTML) 
+     *  usamos el prefijo 'bind', ya que seran enlaces 
      */
 
     bindAceleraCoche(handler) {
@@ -101,6 +101,18 @@ class View {
                 handler(modelo, 1)
             }
         })
+    }
+
+    /**
+     * Mostramos la velocidad
+     * @param model coche del que queremos mostrar la velocidad
+     * @param velocity nueva velocidad
+     */
+
+    displayVelocity(model, velocity) {
+        // recojemos el elemento para actualizar la velocidad
+        const spanVelocity = this.getElement('.' + model + ' span')
+        spanVelocity.textContent = velocity
     }
 
 }

@@ -41,7 +41,10 @@ class Controller {
     handleAumentaVelocidad(modelo, valor) {
         // recojemos el coche que queremos acelerar
         // y utilizamos su método acelerar para cambiar la velocidad
-        this.model.getCar(modelo).acelerar(valor)
+        const nuevaVelocidad = this.model.getCar(modelo).acelerar(valor)
+
+        // actualizamos el valor en el HTML
+        app.view.displayVelocity(modelo, nuevaVelocidad)
     }
 
     /**
@@ -61,7 +64,10 @@ class Controller {
     handleDisminuyeVelocidad = (modelo, valor) => {
         // recojemos el coche que queremos frenar
         // y utilizamos su método frenar para cambiar la velocidad
-        this.model.getCar(modelo).frenar(valor)
+        const nuevaVelocidad = this.model.getCar(modelo).frenar(valor)
+
+        // actualizamos el valor en el HTML
+        app.view.displayVelocity(modelo, nuevaVelocidad)
     }
 
 }

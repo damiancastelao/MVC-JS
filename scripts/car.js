@@ -23,12 +23,16 @@ class Car {
     }
 
     // aumentamos la velocidad en un valor
+    // devolvemos el valor para que el controlador se lo pueda pasar el View
     acelerar(valor) {
         this.velocity = this.velocity + valor
+        return this.velocity
     }
 
     // disminuimos la velocidad en un valor
+    // devolvemos el valor para que el controlador se lo pueda pasar el View
     frenar(valor) {
         this.velocity = this.velocity - valor
+        return this.velocity
     }
 }
