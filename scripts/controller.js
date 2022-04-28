@@ -17,16 +17,23 @@ class Controller {
 
         // instanciamos un coche en particular
         // y lo añadimos al array del model
-        this.model.addCar("fiat")
+        const fiatNuevo = this.model.addCar("Fiat")
+
+        // construimos los mandos
+        this.view.creaMandos(fiatNuevo);
 
     }
+
+    /* Estos son los manejadores (handle) que se encargan de utilizar el Model */
 
     /**
      * Acelera el coche, para eso usamos el Model
      * @param modelo coche que queremos acelerar
      * @param valor incremento de velocidad
      */
-    aumentaVelocidad(modelo, valor) {
+    handleAumentaVelocidad(modelo, valor) {
+        // recojemos el coche que queremos acelerar
+        // y utilizamos su método acelerar para cambiar la velocidad
         this.model.getCar(modelo).acelerar(valor)
     }
 
@@ -35,7 +42,9 @@ class Controller {
      * @param modelo coche que queremos frenar
      * @param valor decremento de velocidad
      */
-    disminuyeVelocidad(modelo, valor) {
+    handleDisminuyeVelocidad(modelo, valor) {
+        // recojemos el coche que queremos frenar
+        // y utilizamos su método frenar para cambiar la velocidad
         this.model.getCar(modelo).frenar(valor)
     }
 

@@ -10,9 +10,15 @@ class Model {
         ]
     }
 
-    // Añadimos un coche a nuestro array
+    /**
+     * Añadimos un coche a nuestro array
+     * @param model identificacion del coche
+     * @return {Car} objeto coche creado
+     */
     addCar(model) {
-        this.cars.push(new Car(model))
+        const newCar = new Car(model)
+        this.cars.push(newCar)
+        return newCar
     }
 
     // obtenemos un coche según el modelo

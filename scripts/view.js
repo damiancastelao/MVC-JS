@@ -9,14 +9,18 @@ class View {
 
         // creo elemento y le pongo contenido
         this.aviso = this.createElement('h1', 'orange')
-        this.aviso.textContent = 'Utiliza la consola'
+        this.aviso.textContent = 'Utiliza la consola:'
         this.debug1 = this.createElement('h2')
-        this.debug1.textContent = 'Prueba a ver los objetos: app.model.cars'
-        this.debug2 = this.createElement('h2')
-        this.debug2.textContent = "Acelera un coche app.aumentaVelocidad('seat',12)"
+        this.debug1.textContent = 'Prueba crear un coche:'
+        this.debug2 = this.createElement('p')
+        this.debug2.textContent = 'const nuevo = app.model.addCar("Beach")'
+        this.debug3 = this.createElement('h2')
+        this.debug3.textContent = "Luego crea los mando de ese coche:"
+        this.debug4 = this.createElement('p')
+        this.debug4.textContent = 'app.view.creaMandos(nuevo)'
 
         // los añado al div raiz
-        this.app.append(this.aviso, this.debug1, this.debug2)
+        this.app.append(this.aviso, this.debug1, this.debug2, this.debug3, this.debug4)
     }
 
     /**
@@ -43,4 +47,24 @@ class View {
 
         return element
     }
+
+    // Cada vez que creamos un coche vamos a crear un mando
+    // serán dos botones uno para acelerar, otro para frenar
+
+    creaMandos(car) {
+        // creamos un contenedor para los dos botones
+        // utilizamos el modelo del coche como clase, asi lo tenemos identificado
+        const contenedor = this.createElement('div', car.getModel())
+        contenedor.innerHTML = '<h2>' + car.getModel() + '<h2>'
+        this.app.append(contenedor)
+            // cada boton tambien lo identificamos con la clase
+            // lo adjuntamos al contenedor
+        const acelerarButton = this.createElement('button', 'acelerar')
+        acelerarButton.textContent = 'Acelerar'
+        const frenarButton = this.createElement('button', 'frenar')
+        frenarButton.textContent = 'Frenar'
+        contenedor.append(acelerarButton, frenarButton)
+
+    }
+
 }
