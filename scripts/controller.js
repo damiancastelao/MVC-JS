@@ -22,6 +22,10 @@ class Controller {
         // construimos los mandos
         this.view.creaMandos(fiatNuevo);
 
+        // enlazamos los eventos de acelerar y frenar
+        this.view.bindAceleraCoche(this.handleAumentaVelocidad.bind(this))
+        this.view.bindFrenaCoche(this.handleDisminuyeVelocidad.bind(this))
+
     }
 
     /* Estos son los manejadores (handle) que se encargan de utilizar el Model */

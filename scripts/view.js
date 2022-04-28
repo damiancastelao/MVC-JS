@@ -9,7 +9,7 @@ class View {
 
         // creo elemento y le pongo contenido
         this.aviso = this.createElement('h1', 'orange')
-        this.aviso.textContent = 'Utiliza la consola:'
+        this.aviso.textContent = 'Utiliza la consola'
         this.debug1 = this.createElement('h2')
         this.debug1.textContent = 'Prueba crear un coche:'
         this.debug2 = this.createElement('p')
@@ -65,6 +65,42 @@ class View {
         frenarButton.textContent = 'Frenar'
         contenedor.append(acelerarButton, frenarButton)
 
+    }
+
+    /* Creamos los event listeners para lanzar eventos según interacción con la interface de usuario (HTML)
+     * usamos el prefijo 'bind', ya que seran enlaces 
+     */
+
+    bindAceleraCoche(handler) {
+        this.app.addEventListener('click', event => {
+            if (event.target.className === 'acelerar') {
+                // recojemos la clase del div contenedor
+                // de esta manera tenemos una identificación del mando
+                const modelo = event.target.parentElement.className
+
+                // debug
+                console.log('Evento acelerar por: ' + event.target.parentElement.className)
+
+                // ejecutamos la funcion que le hemos pasado por referencia
+                handler(modelo, 1)
+            }
+        })
+    }
+
+    bindFrenaCoche(handler) {
+        this.app.addEventListener('click', event => {
+            if (event.target.className === 'frenar') {
+                // recojemos la clase del div contenedor
+                // de esta manera tenemos una identificación del mando
+                const modelo = event.target.parentElement.className
+
+                // debug
+                console.log('Evento frenar por: ' + event.target.parentElement.className)
+
+                // ejecutamos la funcion que le hemos pasado por referencia
+                handler(modelo, 1)
+            }
+        })
     }
 
 }
