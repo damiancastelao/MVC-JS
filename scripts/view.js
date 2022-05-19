@@ -5,7 +5,7 @@ class View {
     // creamos la vista inicial
     constructor() {
         // recojo el elemento raiz. Un div que contendrá todos los elementos
-        this.app = this.getElement('#root')
+        this.contenedorHTML = this.getElement('#root')
 
         // creo elemento y le pongo contenido
         this.aviso = this.createElement('h1', 'orange')
@@ -16,7 +16,7 @@ class View {
         this.debug2.textContent = "Acelera un coche app.aumentaVelocidad('seat',12)"
 
         // los añado al div raiz
-        this.app.append(this.aviso, this.debug1, this.debug2)
+        this.contenedorHTML.append(this.aviso, this.debug1, this.debug2)
     }
 
     /**
