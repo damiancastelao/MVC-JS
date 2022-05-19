@@ -35,33 +35,33 @@ class Controller {
 
     /**
      * Acelera el coche, para eso usamos el Model
-     * @param modelo coche que queremos acelerar
+     * @param marca coche que queremos acelerar
      * @param valor incremento de velocidad
      */
-    handleAumentaVelocidad(modelo, valor) {
+    handleAumentaVelocidad(marca, valor) {
         // recojemos el coche que queremos acelerar
         // y utilizamos su método acelerar para cambiar la velocidad
-        this.model.getCar(modelo).acelerar(valor)
+        this.model.getCar(marca).acelerar(valor)
     }
 
     /**
      * Frena el coche, para eso usamos el Model
-     * @param modelo coche que queremos frenar
+     * @param marca coche que queremos frenar
      * @param valor decremento de velocidad
      */
-    /* handleDisminuyeVelocidad(modelo, valor) {
+    /* handleDisminuyeVelocidad(marca, valor) {
         // recojemos el coche que queremos frenar
         // y utilizamos su método frenar para cambiar la velocidad
-        this.model.getCar(modelo).frenar(valor)
+        this.model.getCar(marca).frenar(valor)
     } */
 
     // esta sería otra nomencaltura que simplifica el codigo
     // se denomina "arrow functions"
     // https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-    handleDisminuyeVelocidad = (modelo, valor) => {
+    handleDisminuyeVelocidad = (marca, valor) => {
         // recojemos el coche que queremos frenar
         // y utilizamos su método frenar para cambiar la velocidad
-        this.model.getCar(modelo).frenar(valor)
+        this.model.getCar(marca).frenar(valor)
     }
 
 }

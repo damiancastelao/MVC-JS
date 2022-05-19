@@ -5,7 +5,7 @@ class View {
     // creamos la vista inicial
     constructor() {
         // recojo el elemento raiz. Un div que contendrá todos los elementos
-        this.app = this.getElement('#root')
+        this.contenedorHTML = this.getElement('#root')
 
         // creo elemento y le pongo contenido
         this.aviso = this.createElement('h1', 'orange')
@@ -20,7 +20,7 @@ class View {
         this.debug4.textContent = 'app.view.creaMandos(nuevo)'
 
         // los añado al div raiz
-        this.app.append(this.aviso, this.debug1, this.debug2, this.debug3, this.debug4)
+        this.contenedorHTML.append(this.aviso, this.debug1, this.debug2, this.debug3, this.debug4)
     }
 
     /**
@@ -54,9 +54,9 @@ class View {
     creaMandos(car) {
         // creamos un contenedor para los dos botones
         // utilizamos el modelo del coche como clase, asi lo tenemos identificado
-        const contenedor = this.createElement('div', car.getModel())
-        contenedor.innerHTML = '<h2>' + car.getModel() + '<h2>'
-        this.app.append(contenedor)
+        const contenedor = this.createElement('div', car.getMarca())
+        contenedor.innerHTML = '<h2>' + car.getMarca() + '<h2>'
+        this.contenedorHTML.append(contenedor)
             // cada boton tambien lo identificamos con la clase
             // lo adjuntamos al contenedor
         const acelerarButton = this.createElement('button', 'acelerar')
@@ -72,33 +72,33 @@ class View {
      */
 
     bindAceleraCoche(handler) {
-        this.app.addEventListener('click', event => {
+        this.contenedorHTML.addEventListener('click', event => {
             if (event.target.className === 'acelerar') {
                 // recojemos la clase del div contenedor
                 // de esta manera tenemos una identificación del mando
-                const modelo = event.target.parentElement.className
+                const marca = event.target.parentElement.className
 
                 // debug
                 console.log('Evento acelerar por: ' + event.target.parentElement.className)
 
                 // ejecutamos la funcion que le hemos pasado por referencia
-                handler(modelo, 1)
+                handler(marca, 1)
             }
         })
     }
 
     bindFrenaCoche(handler) {
-        this.app.addEventListener('click', event => {
+        this.contenedorHTML.addEventListener('click', event => {
             if (event.target.className === 'frenar') {
                 // recojemos la clase del div contenedor
                 // de esta manera tenemos una identificación del mando
-                const modelo = event.target.parentElement.className
+                const marca = event.target.parentElement.className
 
                 // debug
                 console.log('Evento frenar por: ' + event.target.parentElement.className)
 
                 // ejecutamos la funcion que le hemos pasado por referencia
-                handler(modelo, 1)
+                handler(marca, 1)
             }
         })
     }
