@@ -67,26 +67,50 @@ class View {
 
     }
 
-    /* Creamos los event listeners para lanzar eventos según interacción con la interface de usuario (HTML)
-     * usamos el prefijo 'bind', ya que seran enlaces 
+    /** 
+     * Este metodo lo lanzamos en el constructor del Controller
+     * Creamos los event listeners para lanzar eventos
+     * Vamos a usar el evento "click"
+     * El listener está en el elemento contenedorHTML, que contiene todos los elementos 
+     * Por lo tanto función del listener se ejecutará siempre que el usuario 
+     * haga un click en un elemento, en un elemento cualquiera 
+     * usamos el prefijo 'bind', ya que sera un enlace entre el controller y el listener 
+     * @param handler función que le pasamos desde el controller
      */
 
     bindAceleraCoche(handler) {
-        this.contenedorHTML.addEventListener('click', event => {
-            if (event.target.className === 'acelerar') {
-                // recojemos la clase del div contenedor
-                // de esta manera tenemos una identificación del mando
-                const marca = event.target.parentElement.className
+        this.contenedorHTML.addEventListener(
+            // evento que vamos a observar
+            'click',
+            // función que vamos a lanzar al hacer 'click'
+            // recibe como parametro el evento 
+            // con este objeto (event) podremos distinguir donde el usuario hizo click
+            function(event) {
+                // debug: mostramos el event que recibe el listener
+                console.log(event)
 
-                // debug
-                console.log('Evento acelerar por: ' + event.target.parentElement.className)
+                // si la clase del elemento es "acelerar" 'algo'
+                // podríamos en este listener tener todas las funcionalidades
+                if (event.target.className === 'acelerar') {
+                    // recojemos la clase del div contenedor
+                    // de esta manera tenemos una identificación del mando
+                    const marca = event.target.parentElement.className
 
-                // ejecutamos la funcion que le hemos pasado por referencia
-                handler(marca, 1)
+                    // debug, para poder ver donde el usuario hace click
+                    console.log('Evento acelerar por: ' + event.target.parentElement.className)
+
+                    // ejecutamos la funcion que le hemos pasado por referencia
+                    // Esta funcion se la estamos pasando desde el controller
+                    handler(marca, 1)
+                }
             }
-        })
+        )
     }
 
+    /**
+     * Lo mismo que la anterior pero sin arrow functions
+     * @param {*} handler funcion pasada por el controller
+     */
     bindFrenaCoche(handler) {
         this.contenedorHTML.addEventListener('click', event => {
             if (event.target.className === 'frenar') {
