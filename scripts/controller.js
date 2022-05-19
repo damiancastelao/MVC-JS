@@ -23,20 +23,20 @@ class Controller {
 
     /**
      * Acelera el coche, para eso usamos el Model
-     * @param modelo coche que queremos acelerar
+     * @param marca coche que queremos acelerar
      * @param valor incremento de velocidad
      */
-    aumentaVelocidad(modelo, valor) {
-        this.model.getCar(modelo).acelerar(valor)
+    aumentaVelocidad(marca, valor) {
+        this.model.getCar(marca).acelerar(valor)
     }
 
     /**
      * Frena el coche, para eso usamos el Model
-     * @param modelo coche que queremos frenar
+     * @param mmarca coche que queremos frenar
      * @param valor decremento de velocidad
      */
-    disminuyeVelocidad(modelo, valor) {
-        this.model.getCar(modelo).frenar(valor)
+    disminuyeVelocidad(marca, valor) {
+        this.model.getCar(marca).frenar(valor)
     }
 
 }

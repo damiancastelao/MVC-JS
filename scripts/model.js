@@ -11,15 +11,15 @@ class Model {
     }
 
     // Añadimos un coche a nuestro array
-    addCar(model) {
-        this.cars.push(new Car(model))
+    addCar(marca) {
+        this.cars.push(new Car(marca))
     }
 
     // obtenemos un coche según el modelo
-    getCar(model) {
+    getCar(marca) {
         // buscando en el array el objeto
-        // cuya propiedad model coincida con el parámetro que le estamos pasando
-        return this.cars.find(_car => _car.model === model)
+        // cuya propiedad marca coincida con el parámetro que le estamos pasando
+        return this.cars.find(_car => _car.marca === marca)
     }
 
 }

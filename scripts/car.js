@@ -4,10 +4,10 @@
 class Car {
     /**
      * Constructor de la clase
-     * @param model modelo del coche
+     * @param marca marca del coche
      */
-    constructor(model) {
-        this.model = model
+    constructor(marca) {
+        this.marca = marca
             // inicializamos la velocidad a cero
         this.velocity = 0
     }
@@ -18,8 +18,8 @@ class Car {
     }
 
     // obtenemos el modelo
-    getModel() {
-        return this.model
+    getMarca() {
+        return this.marca
     }
 
     // aumentamos la velocidad en un valor
