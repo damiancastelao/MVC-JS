@@ -22,4 +22,11 @@ class Model {
         return this.cars.find(_car => _car.marca === marca)
     }
 
+    // aceleramos coche
+    acelerarCar(marca, valor) {
+        let _car = this.cars.find(_car => _car.marca === marca)
+        _car.acelerar(valor)
+        return _car.velocity
+    }
+
 }

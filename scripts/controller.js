@@ -23,15 +23,20 @@ class Controller {
 
     /**
      * Acelera el coche, para eso usamos el Model
+     * No utilizamos la clase Car
      * @param marca coche que queremos acelerar
      * @param valor incremento de velocidad
+     * @returns velocidad actualizada
      */
     aumentaVelocidad(marca, valor) {
-        this.model.getCar(marca).acelerar(valor)
+        return this.model.acelerar(marca, valor)
     }
 
     /**
      * Frena el coche, para eso usamos el Model
+     * comprobar la diferencia con el metodo anterior
+     * En este l controlador utiliza los métodos de Car
+     * en el anterior Car y controllor son independientes
      * @param mmarca coche que queremos frenar
      * @param valor decremento de velocidad
      */
