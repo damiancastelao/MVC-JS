@@ -29,7 +29,7 @@ class Controller {
      * @returns velocidad actualizada
      */
     aumentaVelocidad(marca, valor) {
-        return this.model.acelerar(marca, valor)
+        return this.model.acelerarCar(marca, valor)
     }
 
     /**
